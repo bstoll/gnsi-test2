@@ -9,6 +9,11 @@
     ],
     "packageRules": [
         {
+            "description": "Group all GitHub Actions updates",
+            "matchManagers": ["github-actions"],
+            "groupName": "GitHub Actions"
+        },
+        {
             "description": "Group all other Go and Bazel dependencies into a single PR",
             "groupName": "Go and Bazel Dependencies",
             "matchManagers": [
@@ -44,7 +49,7 @@
             "matchDatasources": [
                 "bazel"
             ],
-            "groupName": "Sync: grpc"
+            "groupName": "Go and Bazel Dependencies"
         }
     ],
     "customManagers": [
