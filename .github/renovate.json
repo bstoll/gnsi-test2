@@ -63,9 +63,9 @@
         {
             "customType": "regex",
             "description": "Synchronize grpc: go.mod",
-            "fileMatch": ["^go\.mod$"],
+            "fileMatch": ["^go\\.mod$"],
             "matchStrings": [
-               "\s*google\.golang\.org/grpc\s+v(?<currentValue>[\d\.]+[\d])"
+               "\\s*google\\.golang\\.org/grpc\\s+v(?<currentValue>[\\d\\.]+[\\d])"
             ],
             "depNameTemplate": "grpc",
             "datasourceTemplate": "bazel-central-registry"
@@ -73,9 +73,9 @@
         {
             "customType": "regex",
             "description": "Synchronize grpc: MODULE.bazel",
-            "fileMatch": ["^MODULE\.bazel$"],
+            "fileMatch": ["^MODULE\\.bazel$"],
             "matchStrings": [
-               "\s*bazel_dep\(name\s*=\s*\"grpc\",\s*version\s*=\s*\"(?<currentValue>[\d\.]+[\d])\""
+               "\\s*bazel_dep\\(name\\s*=\\s*\"grpc\",\\s*version\\s*=\\s*\"(?<currentValue>[\\d\\.]+[\\d])\""
             ],
             "depNameTemplate": "grpc",
             "datasourceTemplate": "bazel-central-registry"
@@ -83,9 +83,9 @@
         {
             "customType": "regex",
             "description": "Synchronize protobuf: go.mod",
-            "fileMatch": ["^go\.mod$"],
+            "fileMatch": ["^go\\.mod$"],
             "matchStrings": [
-               "\s*google\.golang\.org/protobuf\s+v(?<currentValue>[\d\.]+[\d])"
+               "\\s*google\\.golang\\.org/protobuf\\s+v(?<currentValue>[\\d\\.]+[\\d])"
             ],
             "depNameTemplate": "protobuf",
             "datasourceTemplate": "bazel-central-registry"
@@ -93,9 +93,9 @@
         {
             "customType": "regex",
             "description": "Synchronize protobuf: MODULE.bazel",
-            "fileMatch": ["^MODULE\.bazel$"],
+            "fileMatch": ["^MODULE\\.bazel$"],
             "matchStrings": [
-               "\s*bazel_dep\(name\s*=\s*\"protobuf\",\s*version\s*=\s*\"(?<currentValue>[\d\.]+[\d])\""
+               "\\s*bazel_dep\\(name\\s*=\\s*\"protobuf\",\\s*version\\s*=\\s*\"(?<currentValue>[\\d\\.]+[\\d])\""
             ],
             "depNameTemplate": "protobuf",
             "datasourceTemplate": "bazel-central-registry"
@@ -103,9 +103,9 @@
         {
             "customType": "regex",
             "description": "Synchronize Go Version: MODULE.bazel go_sdk",
-            "fileMatch": ["^MODULE\.bazel$"],
+            "fileMatch": ["^MODULE\\.bazel$"],
             "matchStrings": [
-               "go_sdk\.download\(version\s*=\s*\"(?<currentValue>[\d\.]+)\"\)"
+               "go_sdk\\.download\\(version\\s*=\\s*\"(?<currentValue>[\\d\\.]+)\"\\)"
             ],
             "depNameTemplate": "golang",
             "datasourceTemplate": "golang"
