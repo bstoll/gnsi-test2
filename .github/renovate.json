@@ -1,0 +1,87 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "timezone": "America/Los_Angeles",
+  "schedule": [
+    "before 9am on every weekday"
+  ],
+  "extends": [
+    "config:recommended"
+  ],
+  "packageRules": [
+    {
+      "description": "Group all other Go and Bazel dependencies into a single PR",
+      "groupName": "Go and Bazel Dependencies",
+      "matchManagers": ["gomod", "bazel"]
+    },
+    {
+      "description": "Group GitHub Actions Go version with the Go Toolchain",
+      "matchPackageNames": ["go"],
+      "matchManagers": ["github-actions"],
+      "groupName": "Go Toolchain"
+    },
+    {
+      "description": "Disable native managers for all synchronized packages",
+      "matchPackageNames": [
+        "grpc", "google.golang.org/grpc",
+        "protobuf", "google.golang.org/protobuf"
+      ],
+      "matchManagers": ["gomod", "bazel"],
+      "enabled": false
+    }
+  ],
+  "regexManagers": [
+    // SYNC GROUP: grpc
+    {
+      "description": "Synchronize grpc: go.mod",
+      "fileMatch": ["^go\\.mod$"],
+      "matchStrings": ["\\s*google\\.golang\\.org/grpc\\s+v(?<currentValue>[\\d\\.]+[\\d])"],
+      "depNameTemplate": "grpc",
+      "datasourceTemplate": "bazel-central-registry",
+      "groupName": "Sync: grpc"
+    },
+    {
+      "description": "Synchronize grpc: MODULE.bazel",
+      "fileMatch": ["^MODULE\\.bazel$"],
+      "matchStrings": ["\\s*bazel_dep\\(name\\s*=\\s*\"grpc\",\\s*version\\s*=\\s*\"(?<currentValue>[\\d\\.]+[\\d])\""],
+      "depNameTemplate": "grpc",
+      "datasourceTemplate": "bazel-central-registry",
+      "groupName": "Sync: grpc"
+    },
+    // SYNC GROUP: protobuf
+    {
+      "description": "Synchronize protobuf: go.mod",
+      "fileMatch": ["^go\\.mod$"],
+      "matchStrings": ["\\s*google\\.golang\\.org/protobuf\\s+v(?<currentValue>[\\d\\.]+[\\d])"],
+      "depNameTemplate": "protobuf",
+      "datasourceTemplate": "bazel-central-registry",
+      "groupName": "Sync: protobuf"
+    },
+    {
+      "description": "Synchronize protobuf: MODULE.bazel",
+      "fileMatch": ["^MODULE\\.bazel$"],
+      "matchStrings": ["\\s*bazel_dep\\(name\\s*=\\s*\"protobuf\",\\s*version\\s*=\\s*\"(?<currentValue>[\\d\\.]+[\\d])\""],
+      "depNameTemplate": "protobuf",
+      "datasourceTemplate": "bazel-central-registry",
+      "groupName": "Sync: protobuf"
+    },
+    // SYNC GROUP: Go Toolchain
+    {
+      "description": "Synchronize Go Version: MODULE.bazel go_sdk",
+      "fileMatch": ["^MODULE\\.bazel$"],
+      "matchStrings": ["go_sdk\\.download\\(version\\s*=\\s*\"(?<currentVaalue>[\\d\\.]+)\"\\)"],
+      "depNameTemplate": "golang",
+      "datasourceTemplate": "golang",
+      "groupName": "Go Toolchain"
+    }
+  ],
+  "postUpgradeTasks": {
+    "commands": [
+      "go mod tidy",
+      "bazel mod tidy"
+    ],
+    "fileFilters": [
+      "**/go.mod",
+      "**/MODULE.bazel"
+    ]
+  }
+}
