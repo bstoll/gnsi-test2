@@ -10,7 +10,7 @@
     "packageRules": [
         {
             "description": "Group all other Go and Bazel dependencies into a single PR",
-            "groupName": "111Go and Bazel Dependencies",
+            "groupName": "Go and Bazel Dependencies",
             "matchManagers": [
                 "gomod",
                 "bazel"
@@ -22,7 +22,7 @@
                 "go",
                 "golang"
             ],
-            "groupName": "111Go Toolchain"
+            "groupName": "Go Toolchain"
         },
         {
             "description": "Disable native managers for all synchronized packages",
@@ -44,9 +44,9 @@
                 "grpc"
             ],
             "matchDatasources": [
-                "bazel-central-registry"
+                "bazel"
             ],
-            "groupName": "111Sync: grpc"
+            "groupName": "Sync: grpc"
         },
         {
             "description": "Group synchronized protobuf dependencies",
@@ -54,9 +54,9 @@
                 "protobuf"
             ],
             "matchDatasources": [
-                "bazel-central-registry"
+                "bazel"
             ],
-            "groupName": "111Sync: protobuf"
+            "groupName": "Sync: protobuf"
         }
     ],
     "customManagers": [
@@ -68,7 +68,7 @@
                "\\s*google\\.golang\\.org/grpc\\s+v(?<currentValue>[\\d\\.]+[\\d])"
             ],
             "depNameTemplate": "grpc",
-            "datasourceTemplate": "bazel-central-registry"
+            "datasourceTemplate": "bazel"
         },
         {
             "customType": "regex",
@@ -78,7 +78,7 @@
                "\\s*bazel_dep\\(name\\s*=\\s*\"grpc\",\\s*version\\s*=\\s*\"(?<currentValue>[\\d\\.]+[\\d])\""
             ],
             "depNameTemplate": "grpc",
-            "datasourceTemplate": "bazel-central-registry"
+            "datasourceTemplate": "bazel"
         },
         {
             "customType": "regex",
@@ -88,7 +88,7 @@
                "\\s*google\\.golang\\.org/protobuf\\s+v(?<currentValue>[\\d\\.]+[\\d])"
             ],
             "depNameTemplate": "protobuf",
-            "datasourceTemplate": "bazel-central-registry"
+            "datasourceTemplate": "bazel"
         },
         {
             "customType": "regex",
@@ -98,7 +98,7 @@
                "\\s*bazel_dep\\(name\\s*=\\s*\"protobuf\",\\s*version\\s*=\\s*\"(?<currentValue>[\\d\\.]+[\\d])\""
             ],
             "depNameTemplate": "protobuf",
-            "datasourceTemplate": "bazel-central-registry"
+            "datasourceTemplate": "bazel"
         },
         {
             "customType": "regex",
@@ -108,7 +108,7 @@
                "go_sdk\\.download\\(version\\s*=\\s*\"(?<currentValue>[\\d\\.]+)\"\\)"
             ],
             "depNameTemplate": "golang",
-            "datasourceTemplate": "golang"
+            "datasourceTemplate": "golang-version"
         }
     ],
     "postUpgradeTasks": {
