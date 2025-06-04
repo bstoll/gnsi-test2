@@ -15,8 +15,7 @@
     },
     {
       "description": "Group GitHub Actions Go version with the Go Toolchain",
-      "matchPackageNames": ["go"],
-      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["go", "golang"],
       "groupName": "Go Toolchain"
     },
     {
@@ -27,51 +26,60 @@
       ],
       "matchManagers": ["gomod", "bazel"],
       "enabled": false
+    },
+    {
+      "description": "Group synchronized gRPC dependencies",
+      "matchDepNameTemplates": ["grpc"],
+      "matchDatasourceTemplates": ["bazel-central-registry"],
+      "groupName": "Sync: grpc"
+    },
+    {
+      "description": "Group synchronized protobuf dependencies",
+      "matchDepNameTemplates": ["protobuf"],
+      "matchDatasourceTemplates": ["bazel-central-registry"],
+      "groupName": "Sync: protobuf"
     }
   ],
-  "regexManagers": [
-    // SYNC GROUP: grpc
+  "customManagers": [
     {
+      "customType": "regex",
       "description": "Synchronize grpc: go.mod",
       "fileMatch": ["^go\\.mod$"],
       "matchStrings": ["\\s*google\\.golang\\.org/grpc\\s+v(?<currentValue>[\\d\\.]+[\\d])"],
       "depNameTemplate": "grpc",
-      "datasourceTemplate": "bazel-central-registry",
-      "groupName": "Sync: grpc"
+      "datasourceTemplate": "bazel-central-registry"
     },
     {
+      "customType": "regex",
       "description": "Synchronize grpc: MODULE.bazel",
       "fileMatch": ["^MODULE\\.bazel$"],
       "matchStrings": ["\\s*bazel_dep\\(name\\s*=\\s*\"grpc\",\\s*version\\s*=\\s*\"(?<currentValue>[\\d\\.]+[\\d])\""],
       "depNameTemplate": "grpc",
-      "datasourceTemplate": "bazel-central-registry",
-      "groupName": "Sync: grpc"
+      "datasourceTemplate": "bazel-central-registry"
     },
-    // SYNC GROUP: protobuf
     {
+      "customType": "regex",
       "description": "Synchronize protobuf: go.mod",
       "fileMatch": ["^go\\.mod$"],
       "matchStrings": ["\\s*google\\.golang\\.org/protobuf\\s+v(?<currentValue>[\\d\\.]+[\\d])"],
       "depNameTemplate": "protobuf",
-      "datasourceTemplate": "bazel-central-registry",
-      "groupName": "Sync: protobuf"
+      "datasourceTemplate": "bazel-central-registry"
     },
     {
+      "customType": "regex",
       "description": "Synchronize protobuf: MODULE.bazel",
       "fileMatch": ["^MODULE\\.bazel$"],
       "matchStrings": ["\\s*bazel_dep\\(name\\s*=\\s*\"protobuf\",\\s*version\\s*=\\s*\"(?<currentValue>[\\d\\.]+[\\d])\""],
       "depNameTemplate": "protobuf",
-      "datasourceTemplate": "bazel-central-registry",
-      "groupName": "Sync: protobuf"
+      "datasourceTemplate": "bazel-central-registry"
     },
-    // SYNC GROUP: Go Toolchain
     {
+      "customType": "regex",
       "description": "Synchronize Go Version: MODULE.bazel go_sdk",
       "fileMatch": ["^MODULE\\.bazel$"],
-      "matchStrings": ["go_sdk\\.download\\(version\\s*=\\s*\"(?<currentVaalue>[\\d\\.]+)\"\\)"],
+      "matchStrings": ["go_sdk\\.download\\(version\\s*=\\s*\"(?<currentValue>[\\d\\.]+)\"\\)"],
       "depNameTemplate": "golang",
-      "datasourceTemplate": "golang",
-      "groupName": "Go Toolchain"
+      "datasourceTemplate": "golang"
     }
   ],
   "postUpgradeTasks": {
