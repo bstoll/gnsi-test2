@@ -7,6 +7,10 @@
     "extends": [
         "config:recommended"
     ],
+    "allowedCommands": [
+        "^go mod tidy$",
+        "^bazel mod tidy$"
+    ],
     "packageRules": [
         {
             "description": "Group all other Go and Bazel dependencies into a single PR",
