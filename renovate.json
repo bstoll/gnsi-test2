@@ -7,10 +7,6 @@
     "extends": [
         "config:recommended"
     ],
-    "allowedCommands": [
-        "^go mod tidy$",
-        "^bazel mod tidy$"
-    ],
     "packageRules": [
         {
             "description": "Group all other Go and Bazel dependencies into a single PR",
@@ -114,15 +110,5 @@
             "depNameTemplate": "golang",
             "datasourceTemplate": "golang-version"
         }
-    ],
-    "postUpgradeTasks": {
-        "commands": [
-            "go mod tidy",
-            "bazel mod tidy"
-        ],
-        "fileFilters": [
-            "**/go.mod",
-            "**/MODULE.bazel"
-        ]
-    }
+    ]
 }
