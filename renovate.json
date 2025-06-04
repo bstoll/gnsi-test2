@@ -13,7 +13,8 @@
             "groupName": "Go and Bazel Dependencies",
             "matchManagers": [
                 "gomod",
-                "bazel"
+                "bazel",
+                "bazel-module"
             ]
         },
         {
@@ -27,10 +28,7 @@
         {
             "description": "Disable native managers for all synchronized packages",
             "matchPackageNames": [
-                "grpc",
-                "google.golang.org/grpc",
-                "protobuf",
-                "google.golang.org/protobuf"
+                "grpc", "google.golang.org/grpc"
             ],
             "matchManagers": [
                 "gomod",
@@ -47,16 +45,6 @@
                 "bazel"
             ],
             "groupName": "Sync: grpc"
-        },
-        {
-            "description": "Group synchronized protobuf dependencies",
-            "matchPackageNames": [
-                "protobuf"
-            ],
-            "matchDatasources": [
-                "bazel"
-            ],
-            "groupName": "Sync: protobuf"
         }
     ],
     "customManagers": [
@@ -78,26 +66,6 @@
                "\\s*bazel_dep\\(name\\s*=\\s*\"grpc\",\\s*version\\s*=\\s*\"(?<currentValue>[\\d\\.]+[\\d])\""
             ],
             "depNameTemplate": "grpc",
-            "datasourceTemplate": "bazel"
-        },
-        {
-            "customType": "regex",
-            "description": "Synchronize protobuf: go.mod",
-            "fileMatch": ["^go\\.mod$"],
-            "matchStrings": [
-               "\\s*google\\.golang\\.org/protobuf\\s+v(?<currentValue>[\\d\\.]+[\\d])"
-            ],
-            "depNameTemplate": "protobuf",
-            "datasourceTemplate": "bazel"
-        },
-        {
-            "customType": "regex",
-            "description": "Synchronize protobuf: MODULE.bazel",
-            "fileMatch": ["^MODULE\\.bazel$"],
-            "matchStrings": [
-               "\\s*bazel_dep\\(name\\s*=\\s*\"protobuf\",\\s*version\\s*=\\s*\"(?<currentValue>[\\d\\.]+[\\d])\""
-            ],
-            "depNameTemplate": "protobuf",
             "datasourceTemplate": "bazel"
         },
         {
