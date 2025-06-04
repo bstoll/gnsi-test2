@@ -10,7 +10,7 @@
     "packageRules": [
         {
             "description": "Group all other Go and Bazel dependencies into a single PR",
-            "groupName": "Go and Bazel Dependencies",
+            "groupName": "111Go and Bazel Dependencies",
             "matchManagers": [
                 "gomod",
                 "bazel"
@@ -22,7 +22,7 @@
                 "go",
                 "golang"
             ],
-            "groupName": "Go Toolchain"
+            "groupName": "111Go Toolchain"
         },
         {
             "description": "Disable native managers for all synchronized packages",
@@ -46,7 +46,7 @@
             "matchDatasources": [
                 "bazel-central-registry"
             ],
-            "groupName": "Sync: grpc"
+            "groupName": "111Sync: grpc"
         },
         {
             "description": "Group synchronized protobuf dependencies",
@@ -56,7 +56,7 @@
             "matchDatasources": [
                 "bazel-central-registry"
             ],
-            "groupName": "Sync: protobuf"
+            "groupName": "111Sync: protobuf"
         }
     ],
     "customManagers": [
