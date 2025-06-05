@@ -10,7 +10,9 @@
     "packageRules": [
         {
             "description": "Group all GitHub Actions updates",
-            "matchManagers": ["github-actions"],
+            "matchManagers": [
+                "github-actions"
+            ],
             "groupName": "GitHub Actions"
         },
         {
@@ -33,7 +35,8 @@
         {
             "description": "Disable native managers for all synchronized packages",
             "matchPackageNames": [
-                "grpc", "google.golang.org/grpc"
+                "grpc",
+                "google.golang.org/grpc"
             ],
             "matchManagers": [
                 "gomod",
@@ -56,9 +59,11 @@
         {
             "customType": "regex",
             "description": "Synchronize grpc: go.mod",
-            "fileMatch": ["^go\\.mod$"],
+            "managerFilePatterns": [
+                "/^go\\.mod$/"
+            ],
             "matchStrings": [
-               "\\s*google\\.golang\\.org/grpc\\s+v(?<currentValue>[\\d\\.]+[\\d])"
+                "\\s*google\\.golang\\.org/grpc\\s+v(?<currentValue>[\\d\\.]+[\\d])"
             ],
             "depNameTemplate": "grpc",
             "datasourceTemplate": "bazel"
@@ -66,9 +71,11 @@
         {
             "customType": "regex",
             "description": "Synchronize grpc: MODULE.bazel",
-            "fileMatch": ["^MODULE\\.bazel$"],
+            "managerFilePatterns": [
+                "/^MODULE\\.bazel$/"
+            ],
             "matchStrings": [
-               "\\s*bazel_dep\\(name\\s*=\\s*\"grpc\",\\s*version\\s*=\\s*\"(?<currentValue>[\\d\\.]+[\\d])\""
+                "\\s*bazel_dep\\(name\\s*=\\s*\"grpc\",\\s*version\\s*=\\s*\"(?<currentValue>[\\d\\.]+[\\d])\""
             ],
             "depNameTemplate": "grpc",
             "datasourceTemplate": "bazel"
@@ -76,9 +83,11 @@
         {
             "customType": "regex",
             "description": "Synchronize Go Version: MODULE.bazel go_sdk",
-            "fileMatch": ["^MODULE\\.bazel$"],
+            "managerFilePatterns": [
+                "/^MODULE\\.bazel$/"
+            ],
             "matchStrings": [
-               "go_sdk\\.download\\(version\\s*=\\s*\"(?<currentValue>[\\d\\.]+)\"\\)"
+                "go_sdk\\.download\\(version\\s*=\\s*\"(?<currentValue>[\\d\\.]+)\"\\)"
             ],
             "depNameTemplate": "golang",
             "datasourceTemplate": "golang-version"
