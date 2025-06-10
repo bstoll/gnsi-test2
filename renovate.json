@@ -22,7 +22,10 @@
                 "gomod",
                 "bazel",
                 "bazel-module"
-            ]
+            ],
+	    "postUpdateOptions": [
+		"gomodTidy"
+	    ]
         },
         {
             "description": "Group GitHub Actions Go version with the Go Toolchain",
