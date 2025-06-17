@@ -44,9 +44,9 @@ def gnsi_deps():
     if not native.existing_rule("com_google_googleapis"):
         http_archive(
             name = "com_google_googleapis",
-            sha256 = "96e00cbeb07ff04a18603b9e8fa4d41f0e22331df7c2fec4e46cc7c2b58b8cfb",
-            strip_prefix = "googleapis-e929e3049c438a8e2f1c28969b7137641b9a7946",
-            urls = ["https://github.com/googleapis/googleapis/archive/e929e3049c438a8e2f1c28969b7137641b9a7946.tar.gz"],
+            sha256 = "732c8d2ff169057afd2f439e27980b668b020400aa3a1fde955abbecc775c729",
+            strip_prefix = "googleapis-ab2a1255dca2b42ebce6d09ba85d3f48ebbeae85",
+            urls = ["https://github.com/googleapis/googleapis/archive/ab2a1255dca2b42ebce6d09ba85d3f48ebbeae85.tar.gz"],
         )
     if not native.existing_rule("com_google_protobuf"):
         http_archive(
