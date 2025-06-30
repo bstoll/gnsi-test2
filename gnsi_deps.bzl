@@ -37,16 +37,16 @@ def gnsi_deps():
     if not native.existing_rule("com_github_grpc_grpc"):
         http_archive(
             name = "com_github_grpc_grpc",
-            url = "https://github.com/grpc/grpc/archive/refs/tags/v1.73.0.tar.gz",
-            strip_prefix = "grpc-1.73.0",
-            sha256 = "00865dbc3d7689fd9c5c7d0a10822a4eae175ca692870433b64106abcb1294a0",
+            url = "https://github.com/grpc/grpc/archive/refs/tags/v1.73.1.tar.gz",
+            strip_prefix = "grpc-1.73.1",
+            sha256 = "e11fd9b963c617de53d08a84f41359164b123f2e8e4180644706688fc9de43d9",
         )
     if not native.existing_rule("com_google_googleapis"):
         http_archive(
             name = "com_google_googleapis",
-            sha256 = "732c8d2ff169057afd2f439e27980b668b020400aa3a1fde955abbecc775c729",
-            strip_prefix = "googleapis-ab2a1255dca2b42ebce6d09ba85d3f48ebbeae85",
-            urls = ["https://github.com/googleapis/googleapis/archive/ab2a1255dca2b42ebce6d09ba85d3f48ebbeae85.tar.gz"],
+            sha256 = "964598be6c734f6fb0cfcecfdb5d4c343b052eb50a2d970f120d72b723ee1caa",
+            strip_prefix = "googleapis-fe97877c88cf7f6d0e46423b52b2561770e35782",
+            urls = ["https://github.com/googleapis/googleapis/archive/fe97877c88cf7f6d0e46423b52b2561770e35782.tar.gz"],
         )
     if not native.existing_rule("com_google_protobuf"):
         http_archive(
