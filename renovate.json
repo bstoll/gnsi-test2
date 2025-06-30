@@ -40,7 +40,7 @@
         {
             "customType": "regex",
             "description": "Synchronize Go Version: MODULE.bazel go_sdk",
-            "managerFilePatterns": [
+            "fileMatch": [
                 "/^MODULE\\.bazel$/"
             ],
             "matchStrings": [
