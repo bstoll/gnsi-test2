@@ -1,53 +1,60 @@
 {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "timezone": "America/Los_Angeles",
-    "schedule": [
-        "before 9am every weekday"
-    ],
-    "extends": [
-        "config:recommended"
-    ],
-    "packageRules": [
-        {
-            "description": "Group all GitHub Actions updates",
-            "matchManagers": [
-                "github-actions"
-            ],
-            "groupName": "GitHub Actions"
-        },
-        {
-            "description": "Group all other Go and Bazel dependencies into a single PR",
-            "groupName": "Go and Bazel Dependencies",
-            "matchManagers": [
-                "gomod",
-                "bazel",
-                "bazel-module"
-            ],
-	    "postUpdateOptions": [
-		"gomodTidy"
-	    ]
-        },
-        {
-            "description": "Group GitHub Actions Go version with the Go Toolchain",
-            "matchPackageNames": [
-                "go",
-                "golang"
-            ],
-            "groupName": "Go Toolchain"
-        }
-    ],
-    "customManagers": [
-        {
-            "customType": "regex",
-            "description": "Synchronize Go Version: MODULE.bazel go_sdk",
-            "fileMatch": [
-                "/^MODULE\\.bazel$/"
-            ],
-            "matchStrings": [
-                "go_sdk\\.download\\(version\\s*=\\s*\"(?<currentValue>[\\d\\.]+)\"\\)"
-            ],
-            "depNameTemplate": "golang",
-            "datasourceTemplate": "golang-version"
-        }
-    ]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "timezone": "America/Los_Angeles",
+  "schedule": [
+    "before 9am every weekday"
+  ],
+  "extends": [
+    "config:recommended"
+  ],
+  "packageRules": [
+    {
+      "description": "Group all GitHub Actions updates",
+      "matchManagers": [
+        "github-actions"
+      ],
+      "groupName": "GitHub Actions"
+    },
+    {
+      "description": "Group all other Go and Bazel dependencies into a single PR",
+      "groupName": "Go and Bazel Dependencies",
+      "matchManagers": [
+        "gomod",
+        "bazel",
+        "bazel-module"
+      ],
+      "postUpdateOptions": [
+        "gomodTidy"
+      ]
+    },
+    {
+      "description": "Group GitHub Actions Go version with the Go Toolchain",
+      "matchPackageNames": [
+        "go",
+        "golang"
+      ],
+      "groupName": "Go Toolchain"
+    },
+    {
+      "description": "Disable automatic updates for com_google_googleapis",
+      "matchPackageNames": [
+        "com_google_googleapis"
+      ],
+      "enabled": false
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Synchronize Go Version: MODULE.bazel go_sdk",
+      "fileMatch": [
+        "/^MODULE\\.bazel$/"
+      ],
+      "matchStrings": [
+        "go_sdk\\.download\\(version\\s*=\\s*\"(?<currentValue>[\\d\\.]+)\"\\)"
+      ],
+      "depNameTemplate": "golang",
+      "datasourceTemplate": "golang-version"
+    }
+  ]
 }
