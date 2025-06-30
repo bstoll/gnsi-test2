@@ -34,58 +34,9 @@
                 "golang"
             ],
             "groupName": "Go Toolchain"
-        },
-        {
-            "description": "Disable native managers for all synchronized packages",
-            "matchPackageNames": [
-                "grpc",
-                "google.golang.org/grpc"
-            ],
-            "matchManagers": [
-                "gomod",
-                "bazel"
-            ],
-            "enabled": false
-        },
-        {
-            "description": "Group synchronized gRPC dependencies",
-            "matchPackageNames": [
-                "grpc"
-            ],
-            "matchDatasources": [
-                "bazel"
-            ],
-            "groupName": "Go and Bazel Dependencies",
-	    "postUpdateOptions": [
-		    "gomodTidy"
-	    ]
         }
     ],
     "customManagers": [
-        {
-            "customType": "regex",
-            "description": "Synchronize grpc: go.mod",
-            "managerFilePatterns": [
-                "/^go\\.mod$/"
-            ],
-            "matchStrings": [
-                "\\s*google\\.golang\\.org/grpc\\s+v(?<currentValue>[\\d\\.]+[\\d])"
-            ],
-            "depNameTemplate": "grpc",
-            "datasourceTemplate": "bazel"
-        },
-        {
-            "customType": "regex",
-            "description": "Synchronize grpc: MODULE.bazel",
-            "managerFilePatterns": [
-                "/^MODULE\\.bazel$/"
-            ],
-            "matchStrings": [
-                "\\s*bazel_dep\\(name\\s*=\\s*\"grpc\",\\s*version\\s*=\\s*\"(?<currentValue>[\\d\\.]+[\\d])\""
-            ],
-            "depNameTemplate": "grpc",
-            "datasourceTemplate": "bazel"
-        },
         {
             "customType": "regex",
             "description": "Synchronize Go Version: MODULE.bazel go_sdk",
