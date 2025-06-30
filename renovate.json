@@ -45,10 +45,7 @@
                 "gomod",
                 "bazel"
             ],
-            "enabled": false,
-	    "postUpdateOptions": [
-		    "gomodTidy"
-	    ]
+            "enabled": false
         },
         {
             "description": "Group synchronized gRPC dependencies",
@@ -58,7 +55,10 @@
             "matchDatasources": [
                 "bazel"
             ],
-            "groupName": "Go and Bazel Dependencies"
+            "groupName": "Go and Bazel Dependencies",
+	    "postUpdateOptions": [
+		    "gomodTidy"
+	    ]
         }
     ],
     "customManagers": [
