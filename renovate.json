@@ -45,7 +45,10 @@
                 "gomod",
                 "bazel"
             ],
-            "enabled": false
+            "enabled": false,
+	    "postUpdateOptions": [
+		    "gomodTidy"
+	    ]
         },
         {
             "description": "Group synchronized gRPC dependencies",
