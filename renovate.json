@@ -13,7 +13,7 @@
       "description": "Group all other Go and Bazel dependencies into a single PR",
       "groupName": "Go and Bazel Dependencies",
       "matchManagers": ["gomod", "bazel", "bazel-module"],
-      "excludePackageNames": ["com_google_googleapis"],
+      "matchPackageNames": ["!com_google_googleapis"],
       "postUpdateOptions": ["gomodTidy"]
     },
     {
