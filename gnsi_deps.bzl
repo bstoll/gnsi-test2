@@ -44,9 +44,9 @@ def gnsi_deps():
     if not native.existing_rule("com_google_googleapis"):
         http_archive(
             name = "com_google_googleapis",
-            sha256 = "964598be6c734f6fb0cfcecfdb5d4c343b052eb50a2d970f120d72b723ee1caa",
-            strip_prefix = "googleapis-fe97877c88cf7f6d0e46423b52b2561770e35782",
-            urls = ["https://github.com/googleapis/googleapis/archive/fe97877c88cf7f6d0e46423b52b2561770e35782.tar.gz"],
+            sha256 = "7f9010e6ffe6c14b7de3a19719503ca064c98c517bd31aa4a1555dfdea9ceddd",
+            strip_prefix = "googleapis-63161c080e7eb3dd1d4fe76db1fad108b6ac9a27",
+            urls = ["https://github.com/googleapis/googleapis/archive/63161c080e7eb3dd1d4fe76db1fad108b6ac9a27.tar.gz"],
         )
     if not native.existing_rule("com_google_protobuf"):
         http_archive(
@@ -62,10 +62,10 @@ def gnsi_deps():
         http_archive(
             name = "bazel_skylib",
             urls = [
-                "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.7.1/bazel-skylib-1.7.1.tar.gz",
-                "https://github.com/bazelbuild/bazel-skylib/releases/download/1.7.1/bazel-skylib-1.7.1.tar.gz",
+                "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.8.0/bazel-skylib-1.8.0.tar.gz",
+                "https://github.com/bazelbuild/bazel-skylib/releases/download/1.8.0/bazel-skylib-1.8.0.tar.gz",
             ],
-            sha256 = "bc283cdfcd526a52c3201279cda4bc298652efa898b10b4db0837dc51652756f",
+            sha256 = "fa01292859726603e3cd3a0f3f29625e68f4d2b165647c72908045027473e933",
         )
     if not native.existing_rule("io_bazel_rules_go"):
         http_archive(
