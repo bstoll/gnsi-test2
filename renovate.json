@@ -1,5 +1,9 @@
 {
-  "extends": ["config:recommended", "schedule:weekdays", ":semanticCommits"],
+  "extends": [
+    "config:recommended",
+    "schedule:weekdays",
+    ":semanticCommitTypeAll(chore)"
+  ],
   "postUpdateOptions": ["gomodTidy"],
   "groupName": "all",
   "ignoreDeps": ["com_google_googleapis"],
